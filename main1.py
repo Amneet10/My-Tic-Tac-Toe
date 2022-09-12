@@ -13,31 +13,45 @@ listOfBoxes =  {1:"" ,2 : "",3 : "",4:"",5: "",6:"",7:"",8:"",9:""}
 print(listOfBoxes)
 
 flag = True
+moveCounter = 0
 
 while True:
     if flag:
-        userInput1 = int(input("first player turn : select your box\n"))
-        if listOfBoxes[userInput1] in ('X','o'):
-            print("value is already entered.Plaese choose a differnt number")
+        if moveCounter < 9:
+            userInput1 = int(input("first player turn : select your box\n"))
+            if listOfBoxes[userInput1] in ('X','o'):
+                print("value is already entered.Plaese choose a differnt number")
+            else:
+                if moveCounter < 9:
+                    listOfBoxes[userInput1] = 'X'
+                    moveCounter+=1
+                    if checkWinner(listOfBoxes) == True:
+                        break
+                    printFunction(listOfBoxes)
+                    flag=False
+
         else:
-            listOfBoxes[userInput1] = 'X'
-            if checkWinner(listOfBoxes) == True:
-                break
-            printFunction(listOfBoxes)
-            flag=False
+            print("game drawn")
+            break
         
 
     else:
-        userInput2 = int(input("second player turn : select your box\n"))
-        if listOfBoxes[userInput2] in ('X','o'):
-            print("value is already entered.Plaese choose a differnt number")
-        else:
-            listOfBoxes[userInput2] = 'o'
-            if checkWinner(listOfBoxes) == True:
-                break
+        if moveCounter < 9:
+            userInput2 = int(input("second player turn : select your box\n"))
+            if listOfBoxes[userInput2] in ('X','o'):
+                print("value is already entered.Plaese choose a differnt number")
+            else:
+                
+                    listOfBoxes[userInput2] = 'o'
+                    moveCounter+=1
+                    if checkWinner(listOfBoxes) == True:
+                        break
+                    printFunction(listOfBoxes)
+                    flag=True
 
-            printFunction(listOfBoxes)
-            flag=True
+        else:
+            print("game drawn")
+            break
 
 
 printFunction(listOfBoxes)
