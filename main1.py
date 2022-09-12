@@ -13,10 +13,10 @@
 
 # userInput = int(input("PlayerOne: Enter your Turn" ))
 
-def printFunction():
-    print(f'------|------|------| \n ------|------|------| \n -----|------|------|')
+def printFunction(grid):
+    print(f'{grid[1]}|{grid[2]}|{grid[3]}|\n -----{grid[4]}|{grid[5]}|{grid[6]}\n -----{grid[7]}|{grid[8]}|{grid[9]}')
+   
 
-printFunction()
 
 
 
@@ -29,12 +29,14 @@ while True:
     if flag:
         userInput1 = int(input("first player turn : select your box\n"))
         listOfBoxes[userInput1] = 'X'
+        printFunction(listOfBoxes)
         flag=False
         
 
     else:
         userInput2 = int(input("second player turn : select your box\n"))
         listOfBoxes[userInput2] = 'o'
+        printFunction(listOfBoxes)
         flag=True
     print(listOfBoxes)
 
