@@ -16,42 +16,22 @@ flag = True
 moveCounter = 0
 
 while True:
-    if flag:
-        if moveCounter < 9:
-            userInput1 = int(input("first player turn : select your box\n"))
-            if listOfBoxes[userInput1] in ('X','o'):
-                print("value is already entered.Plaese choose a differnt number")
-            else:
-                if moveCounter < 9:
-                    listOfBoxes[userInput1] = 'X'
-                    moveCounter+=1
-                    if checkWinner(listOfBoxes) == True:
-                        break
-                    printFunction(listOfBoxes)
-                    flag=False
-
+    if moveCounter < 9:
+        userInput1 = int(input(f" {'1st' if flag else '2nd'} player turn, enter your box number\n"))
+        if listOfBoxes[userInput1] in ('X','o'):
+            print("value is already entered.Plaese choose a differnt number")
         else:
-            print("game drawn")
-            break
-        
+            if moveCounter < 9:
+                listOfBoxes[userInput1] = 'X' if flag else 'o' #a if condition else b
+                moveCounter+=1
+                if checkWinner(listOfBoxes) == True:
+                    break
+                printFunction(listOfBoxes)
+                flag = not flag
 
     else:
-        if moveCounter < 9:
-            userInput2 = int(input("second player turn : select your box\n"))
-            if listOfBoxes[userInput2] in ('X','o'):
-                print("value is already entered.Plaese choose a differnt number")
-            else:
-                
-                    listOfBoxes[userInput2] = 'o'
-                    moveCounter+=1
-                    if checkWinner(listOfBoxes) == True:
-                        break
-                    printFunction(listOfBoxes)
-                    flag=True
-
-        else:
-            print("game drawn")
-            break
+        print("game drawn")
+        break
 
 
 printFunction(listOfBoxes)
